@@ -1,8 +1,8 @@
 from pyrogram import Client, filters
 from pyrogram.types import Message
+from config import HNDLR
 
-
-@Client.on_message(filters.command(["block"], prefixes="!") & filters.me)
+@Client.on_message(filters.command(["block"], prefixes=f"{HNDLR}") & filters.me)
 async def block_True(client: Client, message: Message):
     try:
         user_id = message.command[1]
@@ -14,7 +14,7 @@ async def block_True(client: Client, message: Message):
         await message.edit(f"<b>😨 Ooops:</b> <code>{e}</code>")
 
 
-@Client.on_message(filters.command(["unblock"], prefix) & filters.me)
+@Client.on_message(filters.command(["unblock"], prefixes=f"{HNDLR}") & filters.me)
 async def unblock(client: Client, message: Message):
     try:
         user_id = message.command[1]
