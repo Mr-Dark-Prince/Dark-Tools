@@ -59,3 +59,81 @@ async def get_user_and_name(message):
             message.reply_to_message.sender_chat.id,
             message.reply_to_message.sender_chat.title,
         )
+
+
+@Client.on_message(filters.command(["ban"], prefixes=f"{HNDLR}") & filters.me)
+async def ban_command(client: Client, message: Message):
+    cause = await text(client, message)
+    if message.reply_to_message and message.chat.type not in ["private", "channel"]:
+        user_for_ban, name = await get_user_and_name(message)
+        try:
+            await client.kick_chat_member(message.chat.id, user_for_ban)
+            channel = await client.resolve_peer(message.chat.id)
+            user_id = await client.resolve_peer(user_for_ban)
+            if "report_spam" in cause.lower().split():
+                await client.send(
+                    functions.channels.ReportSpam(
+                        channel=(channel),
+                        user_id=(user_id),
+                        id=[message.reply_to_message.message_id],
+                    )
+                )
+            if "delete_history" in cause.lower().split():
+                await client.send(
+                    functions.channels.DeleteUserHistory(
+                        channel=(channel), user_id=(user_id)
+                    )
+                )
+            text_c = "".join(
+                f" {_}"
+                for _ in cause.split()
+                if _.lower() not in ["delete_history", "report_spam"]
+            )
+
+            await message.edit(
+                f"<b>{name}</b> <code>banned!</code>"
+                + f"\n{'<b>Cause:</b> <i>' + text_c.split(maxsplit=1)[1] + '</i>' if len(text_c.split()) > 1 else ''}"
+            )
+        except UserAdminInvalid:
+            await message.edit("<b>No rights</b>")
+        except ChatAdminRequired:
+            await message.edit("<b>No rights</b>")
+        except Exception as e:
+            print(e)
+            await message.edit("<b>No rights</b>")
+    elif not message.reply_to_message and message.chat.type not in [
+        "private",
+        "channel",
+    ]:
+        if len(cause.split()) > 1:
+            try:
+                if await check_username_or_id(cause.split(" ")[1]) == "channel":
+                    user_to_ban = await client.get_chat(cause.split(" ")[1])
+                    name = user_to_ban.title
+                elif await check_username_or_id(cause.split(" ")[1]) == "user":
+                    user_to_ban = await client.get_users(cause.split(" ")[1])
+                    name = user_to_ban.first_name
+                try:
+                    await client.kick_chat_member(message.chat.id, user_to_ban.id)
+                    await message.edit(
+                        f"<b>{name}</b> <code>banned!</code>"
+                        + f"\n{'<b>Cause:</b> <i>' + cause.split(' ', maxsplit=2)[2] + '</i>' if len(cause.split()) > 2 else ''}"
+                    )
+                except UserAdminInvalid:
+                    await message.edit("<b>No rights</b>")
+                except ChatAdminRequired:
+                    await message.edit("<b>No rights</b>")
+                except Exception as e:
+                    print(e)
+                    await message.edit("<b>No rights</b>")
+            except PeerIdInvalid:
+                await message.edit("<b>User is not found</b>")
+            except UsernameInvalid:
+                await message.edit("<b>User is not found</b>")
+            except IndexError:
+                await message.edit("<b>User is not found</b>")
+        else:
+            await message.edit("<b>user_id or username</b>")
+    else:
+        await message.edit("<b>Unsupported</b>")
+
