@@ -13,7 +13,7 @@ from config import HNDLR
 from pyrogram import Client as app
 
 
-@app.on_message(filters.command("kang", HNDLR) & filters.me)
+@app.on_message(filters.command(["kang"], prefixes=f"{HNDLR}") & filters.me)
 async def kang(client, message):
     user = await app.get_me()
     replied = message.reply_to_message
@@ -174,7 +174,7 @@ async def kang(client, message):
             os.remove(photo)
 
 
-@app.on_message(filters.command("stkrinfo", PREFIX) & filters.me)
+@app.on_message(filters.command(["stkinfo"], prefixes=f"{HNDLR}") & filters.me)
 async def sticker_pack_info_(client, message):
     replied = message.reply_to_message
     if not replied:
