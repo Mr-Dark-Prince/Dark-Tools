@@ -1,13 +1,13 @@
 {
-    "name": "EvaMaria",
-    "description": "Telegram UserBot for Video Chat.",
-    "logo": "https://telegra.ph/file/e99fd5f4e72127ed67c65.jpg",
+    "name": "Mister Dark Prince",
+    "description": "Useless bot.",
+    "logo": "https://telegra.ph/file/11eb965b71332ed5c20fe.jpg",
     "keywords": [
         "Telegram",
-        "MusicPlayer",
-        "VideoPlayer"
+        "Self bot",
+        "Mister Dark Prince"
     ],
-    "repository": "https://github.com/Mr-dark-prince/EvaMaria",
+    "repository": "https://github.com/Mr-dark-prince/Mister_Dark_Prince",
     "env": {
         "SESSION": {
             "description": "Pyrogram String Session",
