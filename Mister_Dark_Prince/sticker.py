@@ -174,7 +174,7 @@ async def kang(client, message):
             os.remove(photo)
 
 
-@client.on_message(filters.command(["stkinfo"], prefixes=f"{HNDLR}") & filters.me)
+@Client.on_message(filters.command(["stkinfo"], prefixes=f"{HNDLR}") & filters.me)
 async def sticker_pack_info_(client, message):
     replied = message.reply_to_message
     if not replied:
