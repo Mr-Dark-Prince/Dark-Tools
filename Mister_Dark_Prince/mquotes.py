@@ -4,11 +4,10 @@ import requests
 from PIL import Image, ImageDraw, ImageFont, ImageOps
 from pyrogram import Client, filters
 from pyrogram.types import Message
+from config import HNDLR 
 
-from ..utils.utils import modules_help, prefix
 
-
-@Client.on_message(filters.command(["mquote", "mq"], prefix) & filters.me)
+@Client.on_message(filters.command(["mquote", "mq"], prefixes=f"{HNDLR}")) & filters.me)
 async def quotes(client: Client, message: Message):
     await message.edit("<code>Quoting ...</code>")
     if message.reply_to_message:
@@ -810,7 +809,3 @@ async def quotes(client: Client, message: Message):
     else:
         await message.edit("Reply on user message")
 
-
-modules_help.append(
-    {"mquotes": [{"mquote": "Reply on user message (for better result, use SQuotes)"}]}
-)
