@@ -1,4 +1,4 @@
-# clear mentions from users 
+# clear mentions from groups
 
 from pyrogram import Client, filters
 from pyrogram.errors import FloodWait
