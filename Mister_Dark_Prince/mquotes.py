@@ -7,7 +7,7 @@ from pyrogram.types import Message
 from config import HNDLR 
 
 
-@Client.on_message(filters.command(["mquote", "mq"], prefixes=f"{HNDLR}")) & filters.me)
+@Client.on_message(filters.command(["mquote", "mq"], prefixes=f"{HNDLR}") & filters.me)
 async def quotes(client: Client, message: Message):
     await message.edit("<code>Quoting ...</code>")
     if message.reply_to_message:
