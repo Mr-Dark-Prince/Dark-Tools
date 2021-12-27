@@ -14,7 +14,7 @@ async def afk_handler(client, message):
         afk_time = end - start
         if message.from_user.is_bot is False:
             await message.reply_text(
-                f"<b>Sorry🤓\nIm Offline⚠️\n⏱️{afk_time}</b>\n" f"<b>➡️Reason:</b> <i>{reason}</i>"
+                f"<b>🤓Sorry\n⚠️I'm Busy\n⏳️{afk_time}</b>\n" f"<b>➡️Reason:</b> <b>{reason}</b>"
             )
     except NameError:
         pass
