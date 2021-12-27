@@ -4,7 +4,7 @@ from pyrogram.raw import functions, types
 from pyrogram.types import Message
 from config import HNDLR
 
-@Client.on_message(filters.command(["clear@"], prefixes=f"{HNDLR}") & filters.me)
+@Client.on_message(filters.command(["clear_@"], prefixes=f"{HNDLR}") & filters.me)
 async def solo_clear_handler(c: Client, m: Message):
     await m.delete()
     peer = await c.resolve_peer(m.chat.id)
@@ -12,7 +12,7 @@ async def solo_clear_handler(c: Client, m: Message):
     await c.send(request)
 
 
-@Client.on_message(filters.command(["all@"], prefixes=f"{HNDLR}") & filters.me)
+@Client.on_message(filters.command(["all_@"], prefixes=f"{HNDLR}") & filters.me)
 async def global_clear_handler(c: Client, m: Message):
     request = functions.messages.GetAllChats(except_ids=[])
     try:
