@@ -25,7 +25,7 @@ async def afk(client, message):
     global start, end, handler, reason
     start = datetime.datetime.now().replace(microsecond=0)
     handler = client.add_handler(
-        MessageHandler(afk_handler, (filters.group & ~filters.me))
+        MessageHandler(afk_handler, (filters.private & filters.group & ~filters.me))
     )
     if len(message.text.split()) >= 2:
         reason = message.text.split(" ", maxsplit=1)[1]
