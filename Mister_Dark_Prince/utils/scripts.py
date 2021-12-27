@@ -33,3 +33,7 @@ async def chat_permissions(client: Client, message: Message):
         can_invite_users=message.chat.permissions.can_invite_users,
         can_pin_messages=message.chat.permissions.can_pin_messages,
     )
+
+
+async def restart():
+    await os.execvp("python3", ["python3", "main.py"])
