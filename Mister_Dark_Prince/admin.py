@@ -138,7 +138,7 @@ async def ban_command(client: Client, message: Message):
         await message.edit("<b>Unsupported</b>")
 
 
-@Client.on_message(filters.command(["unban"], prefix) & filters.me)
+@Client.on_message(filters.command(["unban"], prefixes=f"{HNDLR}") & filters.me)
 async def unban_command(client: Client, message: Message):
     cause = await text(client, message)
     if message.reply_to_message and message.chat.type not in ["private", "channel"]:
@@ -194,7 +194,7 @@ async def unban_command(client: Client, message: Message):
         await message.edit("<b>Unsupported</b>")
 
 
-@Client.on_message(filters.command(["kick"], prefix) & filters.me)
+@Client.on_message(filters.command(["kick"], prefixes=f"{HNDLR}") & filters.me)
 async def kick_command(client: Client, message: Message):
     cause = await text(client, message)
     if message.reply_to_message and message.chat.type not in ["private", "channel"]:
@@ -276,7 +276,7 @@ async def kick_command(client: Client, message: Message):
         await message.edit("<b>Unsupported</b>")
 
 
-@Client.on_message(filters.command(["unmute"], prefix) & filters.me)
+@Client.on_message(filters.command(["unmute"], prefixes=f"{HNDLR}") & filters.me)
 async def unmute_command(client, message):
     cause = await text(client, message)
     if message.reply_to_message and message.chat.type not in ["private", "channel"]:
@@ -337,7 +337,7 @@ async def unmute_command(client, message):
         await message.edit("<b>Unsupported</b>")
 
 
-@Client.on_message(filters.command(["mute"], prefix) & filters.me)
+@Client.on_message(filters.command(["mute"], prefixes=f"{HNDLR}") & filters.me)
 async def mute_command(client: Client, message: Message):
     cause = await text(client, message)
     if message.reply_to_message and message.chat.type not in ["private", "channel"]:
@@ -491,7 +491,7 @@ async def mute_command(client: Client, message: Message):
         await message.edit("<b>Unsupported</b>")
 
 
-@Client.on_message(filters.command(["demote"], prefix) & filters.me)
+@Client.on_message(filters.command(["demote"], prefixes=f"{HNDLR}") & filters.me)
 async def demote_command(client: Client, message: Message):
     cause = await text(client, message)
     if message.reply_to_message and message.chat.type not in ["private", "channel"]:
@@ -569,7 +569,7 @@ async def demote_command(client: Client, message: Message):
         await message.edit("<b>Unsupported</b>")
 
 
-@Client.on_message(filters.command(["promote"], prefix) & filters.me)
+@Client.on_message(filters.command(["promote"], prefixes=f"{HNDLR}") & filters.me)
 async def promote_command(client: Client, message: Message):
     cause = await text(client, message)
     if message.reply_to_message and message.chat.type not in ["private", "channel"]:
