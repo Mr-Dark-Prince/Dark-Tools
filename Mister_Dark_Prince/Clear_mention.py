@@ -1,8 +1,11 @@
+# clear mentions from users 
+
 from pyrogram import Client, filters
 from pyrogram.errors import FloodWait
 from pyrogram.raw import functions, types
 from pyrogram.types import Message
 from config import HNDLR
+
 
 @Client.on_message(filters.command(["clear_@"], prefixes=f"{HNDLR}") & filters.me)
 async def solo_clear_handler(c: Client, m: Message):
