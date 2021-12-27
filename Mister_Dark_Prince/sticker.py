@@ -10,12 +10,12 @@ from pyrogram.raw.types import InputStickerSetShortName
 from pyrogram.errors import YouBlockedUser, StickersetInvalid
 from Mister_Dark_Prince.helpers.pyrohelper import get_args
 from config import HNDLR
-from pyrogram import Client as app
+from pyrogram import Client
 
 
-@app.on_message(filters.command(["kang"], prefixes=f"{HNDLR}") & filters.me)
+@Client.on_message(filters.command(["kang"], prefixes=f"{HNDLR}") & filters.me)
 async def kang(client, message):
-    user = await app.get_me()
+    user = await client.get_me()
     replied = message.reply_to_message
     photo = None
     emoji_ = None
@@ -40,7 +40,7 @@ async def kang(client, message):
             await message.edit("`Unsupported File!`")
             return
         await message.edit(f"`{random.choice(KANGING_STR)}`")
-        photo = await app.download_media(message=replied)
+        photo = await client.download_media(message=replied)
     else:
         await message.edit("`I can't kang that...`")
         return
@@ -79,18 +79,18 @@ async def kang(client, message):
             cmd = "/newanimated"
         exist = False
         try:
-            exist = await app.send(
+            exist = await client.send(
                 GetStickerSet(stickerset=InputStickerSetShortName(short_name=packname))
             )
         except StickersetInvalid:
             pass
         if exist is not False:
             try:
-                await app.send_message("Stickers", "/addsticker")
+                await client.send_message("Stickers", "/addsticker")
             except YouBlockedUser:
                 await message.edit("first **unblock** @Stickers")
                 return
-            await app.send_message("Stickers", packname)
+            await client.send_message("Stickers", packname)
             limit = "50" if is_anim else "120"
             while limit in await get_response(message):
                 pack += 1
@@ -102,32 +102,32 @@ async def kang(client, message):
                 await message.edit(
                     "`Switching to Pack " + str(pack) + " due to insufficient space`"
                 )
-                await app.send_message("Stickers", packname)
+                await client.send_message("Stickers", packname)
                 if await get_response(message) == "Invalid pack selected":
-                    await app.send_message("Stickers", cmd)
+                    await client.send_message("Stickers", cmd)
                     await get_response(message)
-                    await app.send_message("Stickers", packnick)
+                    await client.send_message("Stickers", packnick)
                     await get_response(message)
-                    await app.send_document("Stickers", photo)
+                    await client.send_document("Stickers", photo)
                     await get_response(message)
-                    await app.send_message("Stickers", emoji_)
+                    await client.send_message("Stickers", emoji_)
                     await get_response(message)
-                    await app.send_message("Stickers", "/publish")
+                    await client.send_message("Stickers", "/publish")
                     if is_anim:
                         await get_response(message)
-                        await app.send_message(
+                        await client.send_message(
                             "Stickers", f"<{packnick}>", parse_mode=None
                         )
                     await get_response(message)
-                    await app.send_message("Stickers", "/skip")
+                    await client.send_message("Stickers", "/skip")
                     await get_response(message)
-                    await app.send_message("Stickers", packname)
+                    await client.send_message("Stickers", packname)
                     out = f"[kanged](t.me/addstickers/{packname})"
                     await message.edit(
                         f"**Sticker** {out} __in a Different Pack__**!**"
                     )
                     return
-            await app.send_document("Stickers", photo)
+            await client.send_document("Stickers", photo)
             time.sleep(0.2)
             rsp = await get_response(message)
             if "Sorry, the file type is invalid." in rsp:
@@ -136,19 +136,19 @@ async def kang(client, message):
                     "`bot to add the sticker manually.`"
                 )
                 return
-            await app.send_message("Stickers", emoji_)
+            await client.send_message("Stickers", emoji_)
             await get_response(message)
-            await app.send_message("Stickers", "/done")
+            await client.send_message("Stickers", "/done")
         else:
             await message.edit("`Brewing a new Pack...`")
             try:
-                await app.send_message("Stickers", cmd)
+                await client.send_message("Stickers", cmd)
             except YouBlockedUser:
                 await message.edit("first **unblock** @Stickers")
                 return
-            await app.send_message("Stickers", packnick)
+            await client.send_message("Stickers", packnick)
             await get_response(message)
-            await app.send_document("Stickers", photo)
+            await client.send_document("Stickers", photo)
             await get_response(message)
             rsp = await get_response(message)
             if "Sorry, the file type is invalid." in rsp:
@@ -157,24 +157,24 @@ async def kang(client, message):
                     "`bot to add the sticker manually.`"
                 )
                 return
-            await app.send_message("Stickers", emoji_)
+            await client.send_message("Stickers", emoji_)
             await get_response(message)
-            await app.send_message("Stickers", "/publish")
+            await client.send_message("Stickers", "/publish")
             if is_anim:
                 await get_response(message)
-                await app.send_message("Stickers", f"<{packnick}>", parse_mode=None)
+                await client.send_message("Stickers", f"<{packnick}>", parse_mode=None)
             await get_response(message)
-            await app.send_message("Stickers", "/skip")
+            await client.send_message("Stickers", "/skip")
             await get_response(message)
-            await app.send_message("Stickers", packname)
+            await client.send_message("Stickers", packname)
         out = f"[kanged](t.me/addstickers/{packname})"
         await message.edit(f"**Sticker** {out}**!**")
-        await app.read_history("Stickers")
+        await client.read_history("Stickers")
         if os.path.exists(str(photo)):
             os.remove(photo)
 
 
-@app.on_message(filters.command(["stkinfo"], prefixes=f"{HNDLR}") & filters.me)
+@client.on_message(filters.command(["stkinfo"], prefixes=f"{HNDLR}") & filters.me)
 async def sticker_pack_info_(client, message):
     replied = message.reply_to_message
     if not replied:
@@ -184,7 +184,7 @@ async def sticker_pack_info_(client, message):
         await message.edit("`Reply to a sticker to get the pack details`")
         return
     await message.edit("`Fetching details of the sticker pack, please wait..`")
-    get_stickerset = await app.send(
+    get_stickerset = await client.send(
         GetStickerSet(
             stickerset=InputStickerSetShortName(short_name=replied.sticker.set_name)
         )
@@ -192,7 +192,7 @@ async def sticker_pack_info_(client, message):
     pack_emojis = []
     for document_sticker in get_stickerset.packs:
         if document_sticker.emoticon not in pack_emojis:
-            pack_emojis.append(document_sticker.emoticon)
+            pack_emojis.clientend(document_sticker.emoticon)
     out_str = (
         f"**Sticker Title:** `{get_stickerset.set.title}\n`"
         f"**Sticker Short Name:** `{get_stickerset.set.short_name}`\n"
@@ -221,7 +221,7 @@ def resize_photo(photo: str) -> io.BytesIO:
 
 
 async def get_response(message):
-    return [x async for x in app.iter_history("Stickers", limit=1)][0].text
+    return [x async for x in client.iter_history("Stickers", limit=1)][0].text
 
 
 KANGING_STR = (
