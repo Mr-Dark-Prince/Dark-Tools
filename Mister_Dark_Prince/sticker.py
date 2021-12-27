@@ -13,7 +13,7 @@ from config import HNDLR
 from pyrogram import Client as app
 
 
-@app.on_message(filters.command("kang", PREFIX) & filters.me)
+@app.on_message(filters.command("kang", HNDLR) & filters.me)
 async def kang(client, message):
     user = await app.get_me()
     replied = message.reply_to_message
