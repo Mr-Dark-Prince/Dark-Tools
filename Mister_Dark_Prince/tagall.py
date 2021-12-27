@@ -4,7 +4,7 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 
 
-@Client.on_message(filters.command("tagall", prefixes="!") & filters.me)
+@Client.on_message(filters.command("tagall", prefixes=f"{HNDLR}") & filters.me)
 async def tagall(client: Client, message: Message):
     await message.delete()
     chat_id = message.chat.id
