@@ -14,7 +14,7 @@ async def afk_handler(client, message):
         afk_time = end - start
         if message.from_user.is_bot is False:
             await message.reply_text(
-                f"<b>I afk {afk_time}</b>\n" f"<b>Reason:</b> <i>{reason}</i>"
+                f"<b>Sorry🤓\nIm Offline⚠️\n⏱️{afk_time}</b>\n" f"<b>➡️Reason:</b> <i>{reason}</i>"
             )
     except NameError:
         pass
@@ -25,7 +25,7 @@ async def afk(client, message):
     global start, end, handler, reason
     start = datetime.datetime.now().replace(microsecond=0)
     handler = client.add_handler(
-        MessageHandler(afk_handler, (filters.private & ~filters.me))
+        MessageHandler(afk_handler, (filters.group & ~filters.me))
     )
     if len(message.text.split()) >= 2:
         reason = message.text.split(" ", maxsplit=1)[1]
