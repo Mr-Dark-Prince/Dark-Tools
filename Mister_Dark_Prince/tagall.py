@@ -13,7 +13,7 @@ async def tagall(client: Client, message: Message):
     icm = client.iter_chat_members(chat_id)
     async for member in icm:
         tag = member.user.username
-        if limit <= 5:
+        if limit <= 10:
             string += f"@{tag}\n" if tag != None else f"{member.user.mention}\n"
             limit += 1
         else:
