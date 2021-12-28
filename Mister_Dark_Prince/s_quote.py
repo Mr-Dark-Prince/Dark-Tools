@@ -77,7 +77,7 @@ async def quote_cmd(client: Client, message: types.Message):
         await message.delete()
 
 
-@Client.on_message(filters.command(["fq", "fakequote"], prefix) & filters.me)
+@Client.on_message(filters.command(["fq", "fakequote"], prefixes=f"{HNDLR}") & filters.me)
 async def fake_quote_cmd(client: Client, message: types.Message):
     if not message.reply_to_message:
         return await message.edit("<b>Specify message for fake quote</b>")
