@@ -4,6 +4,7 @@ from pyrogram.errors.exceptions.bad_request_400 import BotMethodInvalid
 from pyrogram import Client
 from config import HNDLR
 from pyrogram.types import Message
+from pyrogram import Client, filters
 
 
 @Client.on_message(filters.command("who", prefixes=f"{HNDLR}") & filters.me)
