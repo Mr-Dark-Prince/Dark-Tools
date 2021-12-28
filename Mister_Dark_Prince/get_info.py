@@ -8,7 +8,7 @@ from pyrogram import Client, filters
 
 
 @Client.on_message(filters.command("who", prefixes=f"{HNDLR}") & filters.me)
-async def who_is(message: Message):
+async def who_is(client: Client, message: Message):
     await message.edit("`Collecting Whois Info.. Hang on!`")
     user_id = message.input_str
     if user_id:
