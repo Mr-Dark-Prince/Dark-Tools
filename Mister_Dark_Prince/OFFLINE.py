@@ -1,8 +1,8 @@
-from pyrogram import Client
+from main import app
 import pyrogram
 
 
-@Client.on_user_status()
+@app.on_user_status()
 async def make_offline(_, user):
     if user.id == 5029694040 and user.status == "online":
         await app.send(pyrogram.raw.functions.account.UpdateStatus(offline=True))
