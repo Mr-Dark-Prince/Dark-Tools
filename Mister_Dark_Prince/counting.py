@@ -26,10 +26,10 @@ async def ghoul_counter(c: Client, m: Message):
 
     await sleep(1)
 
-    while counter // 7:
-        counter -= 7
+    while counter // 1:
+        counter -= 1
         await message.edit_text(prettify(counter))
         await sleep(1)
 
-    await message.edit_text("😁😁😁")
+    await message.edit_text("നിന്റെ സമയം അടുത്തു 😹")
 
