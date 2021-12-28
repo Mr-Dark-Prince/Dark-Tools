@@ -1,10 +1,11 @@
 TgCrypto
 git+https://github.com/subinps/pyrogram.git@session
+gTTS
 py-tgcalls==0.8.3
 requests
 aiohttp
 aiofiles
 asyncio
 wget
-pillow
+pillow==8.3.2
 python-dotenv
