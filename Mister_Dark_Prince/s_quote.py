@@ -6,6 +6,7 @@ import requests
 from pyrogram import Client, errors, filters, types
 
 from config import HNDLR
+from .darkprince.helpo import modules_help
 
 
 @Client.on_message(filters.command(["q", "quote"], prefixes=f"{HNDLR}") & filters.me)
@@ -365,3 +366,15 @@ def get_full_name(user: types.User) -> str:
     if user.last_name:
         name += " " + user.last_name
     return name
+
+
+modules_help.append(
+    {
+        "squotes": [
+            {
+                "q [reply]* [count] [args]": "Generate a quote\nAvailable args: !png — send a quote as png; !me — send a quote to saved messages; !noreply - make a quote without reply message"
+            },
+            {"fq [reply]* [args] [text]": "Generate a fake quote"},
+        ]
+    }
+)
