@@ -4,8 +4,10 @@ from pyrogram import Client, filters
 from pyrogram.raw import functions
 from pyrogram.types import Message
 
-from .darkprince.helpo import modules_help
 from config import HNDLR
+
+from .darkprince.helpo import modules_help
+
 
 @Client.on_message(
     filters.command(["scr", "screenshot"], prefixes=f"{HNDLR}") & filters.me
