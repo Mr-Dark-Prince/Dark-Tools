@@ -4,8 +4,9 @@ import os
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-from .darkprince.helpo import modules_help
 from config import HNDLR
+
+from .darkprince.helpo import modules_help
 
 
 @Client.on_message(filters.command(["sendmod", "sm"], prefixes=f"{HNDLR}") & filters.me)
@@ -27,9 +28,13 @@ async def sendmod(client: Client, message: Message):
 
         if os.path.isfile(f"Mister_Dark_Prince/{module_name.lower()}.py"):
             await client.send_document(
-                message.chat.id, f"Mister_Dark_Prince/{module_name.lower()}.py", caption=text
+                message.chat.id,
+                f"Mister_Dark_Prince/{module_name.lower()}.py",
+                caption=text,
             )
-        elif os.path.isfile(f"Mister_Dark_Prince/custom_modules/{module_name.lower()}.py"):
+        elif os.path.isfile(
+            f"Mister_Dark_Prince/custom_modules/{module_name.lower()}.py"
+        ):
             await client.send_document(
                 message.chat.id,
                 f"Mister_Dark_Prince/custom_modules/{module_name.lower()}.py",
