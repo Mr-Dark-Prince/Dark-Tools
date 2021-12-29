@@ -23,15 +23,9 @@ async def voice_text(client: Client, message: Message):
                 await asyncio.sleep(3)
                 messages = await client.get_history("@voicybot")
                 await message.edit(
-                    f'<b>Text:</b>\n{messages[0].text.replace("Supported by Borodach Invest"," ")}'
+                    f'<b>📝Text:</b>\n{messages[0].text.replace("Powered by Borodutch Invest"," ")}'
                 )
-                await client.send(
-                    functions.messages.DeleteHistory(
-                        peer=await client.resolve_peer(259276793),
-                        max_id=0,
-                        just_clear=True,
-                    )
-                )
+                
             else:
                 await message.edit("<b> This is not a voice !</b>")
     except Exception as e:
