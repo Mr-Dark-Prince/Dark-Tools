@@ -33,5 +33,9 @@ async def voice_text(client: Client, message: Message):
 
 
 modules_help.append(
-    {"Voice_to_text": [{"stt (മലയാളം😬)": "Replay the voice and get the text from the voice)"}]}
+    {
+        "Voice_to_text": [
+            {"stt (മലയാളം😬)": "Replay the voice and get the text from the voice)"}
+        ]
+    }
 )
