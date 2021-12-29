@@ -1,6 +1,6 @@
 import asyncio
 
-from darkprince.helpo import modules_help
+from .darkprince.helpo import modules_help
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
