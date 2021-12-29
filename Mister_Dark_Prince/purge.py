@@ -3,8 +3,9 @@ import asyncio
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-from .darkprince.helpo import modules_help
 from config import HNDLR
+
+from .darkprince.helpo import modules_help
 
 
 @Client.on_message(filters.command("del", prefixes=f"{HNDLR}") & filters.me)
