@@ -1,9 +1,8 @@
+import wikipedia
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-import wikipedia
-from .darkprince.helpo import modules_help
-from .darkprince.helpo import requirements_list
+from .darkprince.helpo import modules_help, requirements_list
 
 
 @Client.on_message(filters.command("wiki", prefixes=f"{HNDLR}") & filters.me)
