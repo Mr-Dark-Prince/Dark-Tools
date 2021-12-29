@@ -4,8 +4,9 @@ from gtts import gTTS
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-from .darkprince.helpo import modules_help
 from config import HNDLR
+
+from .darkprince.helpo import modules_help
 
 
 @Client.on_message(filters.command("tts", prefixes=f"{HNDLR}") & filters.me)
@@ -26,7 +27,6 @@ async def tts(client: Client, message: Message):
         )
     else:
         await client.send_audio(message.chat.id, voice)
-
 
 
 modules_help.append({"tts": [{"tts [lang]* [text]*": "Say text"}]})
