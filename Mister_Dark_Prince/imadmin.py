@@ -1,4 +1,4 @@
-# to check where I am admin 🤷‍♂️
+# to check where I am admin 
 
 import json
 from html import escape as t
@@ -12,7 +12,7 @@ from pyrogram.types import Message
 from config import HNDLR
 
 
-@Client.on_message(filters.command("adminlist", prefixes=f"{HNDLR}") & filters.me)
+@Client.on_message(filters.command("imadmin", prefixes=f"{HNDLR}") & filters.me)
 async def ownlist(client: Client, message: Message):
     tstart = perf_counter()
     await message.edit("<code>Retrieving information... (it'll take some time)</code>")
@@ -73,3 +73,6 @@ async def ownlist(client: Client, message: Message):
                 e.x
             )
         )
+
+
+modules_help.append({"imadmin": [{"imadmin": "Get adminned and owned chats"}]})
