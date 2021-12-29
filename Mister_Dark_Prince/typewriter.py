@@ -1,3 +1,4 @@
+# don't type large text.. Your account will be banned ❗️
 import asyncio
 import time
 
@@ -13,7 +14,7 @@ async def type(client: Client, message: Message):
     orig_text = " ".join(message.command[1:])
     text = orig_text
     tbp = ""
-    typing_symbol = "▒"
+    typing_symbol = "⌨️"
 
     while tbp != text:
         try:
