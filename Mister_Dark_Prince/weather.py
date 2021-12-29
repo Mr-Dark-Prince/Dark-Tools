@@ -5,6 +5,7 @@ import requests
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
+from .darkprince.helpo import modules_help
 from config import HNDLR
 
 
@@ -41,3 +42,12 @@ async def weather(client: Client, message: Message):
         await message.edit("<code>Error occured</code>")
         await asyncio.sleep(5)
         await message.delete()
+
+
+modules_help.append(
+    {
+        "weather": [
+            {"weather [city]*": "Get the weather in the selected city"},
+        ]
+    }
+)
