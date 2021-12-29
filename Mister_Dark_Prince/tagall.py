@@ -2,7 +2,9 @@ import asyncio
 
 from pyrogram import Client, filters
 from pyrogram.types import Message
+
 from config import HNDLR
+
 
 @Client.on_message(filters.command("tagall", prefixes=f"{HNDLR}") & filters.me)
 async def tagall(client: Client, message: Message):

@@ -1,22 +1,21 @@
-import os
-import sys
 from datetime import datetime
 from time import time
 
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-from config import HNDLR, SUDO_USERS
+from config import HNDLR
 
 # System Uptime
 START_TIME = datetime.utcnow()
 TIME_DURATION_UNITS = (
-    ('Week', 60 * 60 * 24 * 7),
-    ('Day', 60 * 60 * 24),
-    ('Hour', 60 * 60),
-    ('Min', 60),
-    ('Sec', 1)
+    ("Week", 60 * 60 * 24 * 7),
+    ("Day", 60 * 60 * 24),
+    ("Hour", 60 * 60),
+    ("Min", 60),
+    ("Sec", 1),
 )
+
 
 async def _human_time_duration(seconds):
     if seconds == 0:
@@ -40,4 +39,3 @@ async def ping(client, m: Message):
     await m_reply.edit(
         f"<u>I'm Online</u>\n📟`{delta_ping * 1000:.3f} ms` \n<b>⏱️Uptime </b> - `{uptime}`"
     )
-

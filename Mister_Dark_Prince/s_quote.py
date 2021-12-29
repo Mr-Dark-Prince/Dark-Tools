@@ -3,7 +3,7 @@ import os
 from io import BytesIO
 
 import requests
-from pyrogram import Client, filters, errors, types
+from pyrogram import Client, errors, filters, types
 
 from config import HNDLR
 
@@ -77,7 +77,9 @@ async def quote_cmd(client: Client, message: types.Message):
         await message.delete()
 
 
-@Client.on_message(filters.command(["fq", "fakequote"], prefixes=f"{HNDLR}") & filters.me)
+@Client.on_message(
+    filters.command(["fq", "fakequote"], prefixes=f"{HNDLR}") & filters.me
+)
 async def fake_quote_cmd(client: Client, message: types.Message):
     if not message.reply_to_message:
         return await message.edit("<b>Specify message for fake quote</b>")
@@ -301,7 +303,7 @@ def get_reply_text(reply: types.Message) -> str:
             "👤 joined the group"
             if reply.new_chat_members[0].id == reply.from_user.id
             else "👤 invited %s to the group"
-                 % (get_full_name(reply.new_chat_members[0]))
+            % (get_full_name(reply.new_chat_members[0]))
         )
         if reply.new_chat_members
         else (
@@ -363,4 +365,3 @@ def get_full_name(user: types.User) -> str:
     if user.last_name:
         name += " " + user.last_name
     return name
-

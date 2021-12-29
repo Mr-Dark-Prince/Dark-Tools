@@ -33,6 +33,4 @@ async def calc(client: Client, message: Message):
                 f"<i>{args}</i><b>=</b><code>{result}</code>", parse_mode="HTML"
             )
     except Exception as e:
-        await message.edit(
-            f"<i>{args}=</i><b>=</b><code>{e}</code>", parse_mode="HTML"
-        )
+        await message.edit(f"<i>{args}=</i><b>=</b><code>{e}</code>", parse_mode="HTML")

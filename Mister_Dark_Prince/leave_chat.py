@@ -6,7 +6,9 @@ from pyrogram.types import Message
 from config import HNDLR
 
 
-@Client.on_message(filters.command(["leave_chat", "lc"], prefixes=f"{HNDLR}") & filters.me)
+@Client.on_message(
+    filters.command(["leave_chat", "lc"], prefixes=f"{HNDLR}") & filters.me
+)
 async def leave_chat(client: Client, message: Message):
     if message.chat.type in ["group", "supergroup"]:
         await message.edit("<code>Goodbye...</code>")

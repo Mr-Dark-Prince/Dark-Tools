@@ -32,4 +32,3 @@ async def ghoul_counter(c: Client, m: Message):
         await sleep(1)
 
     await message.edit_text("നിന്റെ സമയം അടുത്തു 😹")
-

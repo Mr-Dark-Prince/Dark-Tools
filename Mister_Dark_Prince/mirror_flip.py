@@ -39,9 +39,10 @@ async def make(client, message, o):
     return await message.edit("<b>Need to answer the photo/sticker</b>")
 
 
-@Client.on_message(filters.command(["ll", "rr", "dd", "uu"], prefixes=f"{HNDLR}") & filters.me)
+@Client.on_message(
+    filters.command(["ll", "rr", "dd", "uu"], prefixes=f"{HNDLR}") & filters.me
+)
 async def mirror_flip(client: Client, message: Message):
     await message.edit("<code>Processing...</code>")
     param = {"ll": 1, "rr": 2, "dd": 3, "uu": 4}[message.command[0]]
     await make(client, message, param)
-

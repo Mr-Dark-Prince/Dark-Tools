@@ -22,8 +22,7 @@ async def ownlist(client: Client, message: Message):
         chats = json.loads(str(_))
         for chat in chats["chats"]:
             if chat.get("migrated_to") is None and (
-                chat.get("creator") is True
-                or chat.get("admin_rights") is not None
+                chat.get("creator") is True or chat.get("admin_rights") is not None
             ):
                 role = "creator" if chat.get("creator") is True else "administrator"
                 chatlist.append(
@@ -74,4 +73,3 @@ async def ownlist(client: Client, message: Message):
                 e.x
             )
         )
-
