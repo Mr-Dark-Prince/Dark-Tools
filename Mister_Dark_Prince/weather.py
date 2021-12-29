@@ -9,9 +9,9 @@ from config import HNDLR
 
 
 def get_pic(city):
-    file_name = f"{city}.jpg"
+    file_name = f"{city}.png"
     with open(file_name, "wb") as pic:
-        response = requests.get(f"http://wttr.in/{city}_2&lang=en.jpg", stream=True)
+        response = requests.get(f"http://wttr.in/{city}_2&lang=en.png", stream=True)
 
         if not response.ok:
             print(response)
@@ -36,7 +36,7 @@ async def weather(client: Client, message: Message):
             document=get_pic(city),
             reply_to_message_id=message.message_id,
         )
-        os.remove(f"{city}.jpg")
+        os.remove(f"{city}.png")
     except:
         await message.edit("<code>Error occured</code>")
         await asyncio.sleep(5)
