@@ -1,10 +1,10 @@
 import asyncio
 
 from pyrogram import Client, filters
-from pyrogram.raw import functions
 from pyrogram.types import Message
-from .darkprince.helpo import modules_help, prefix
-from config import HNDLR 
+
+from .darkprince.helpo import modules_help
+
 
 @Client.on_message(filters.command("tt", prefixes="{HNDLR}") & filters.me)
 async def tiktok(client: Client, message: Message):
