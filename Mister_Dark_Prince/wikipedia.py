@@ -2,8 +2,10 @@ import wikipedia
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
+from config import HNDLR
+
 from .darkprince.helpo import modules_help, requirements_list
-from config import HNDLR 
+
 
 @Client.on_message(filters.command("wiki", prefixes=f"{HNDLR}") & filters.me)
 async def wiki(client: Client, message: Message):
