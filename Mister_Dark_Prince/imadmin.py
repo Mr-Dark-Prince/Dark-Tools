@@ -1,4 +1,4 @@
-# to check where I am admin 
+# to check where I am admin
 
 import json
 from html import escape as t
