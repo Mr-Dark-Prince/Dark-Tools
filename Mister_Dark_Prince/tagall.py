@@ -3,6 +3,7 @@ import asyncio
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
+from .darkprince.helpo import modules_help
 from config import HNDLR
 
 
@@ -23,3 +24,6 @@ async def tagall(client: Client, message: Message):
             limit = 1
             string = ""
             await asyncio.sleep(2)
+
+
+modules_help.append({"tagall": [{"tagall": "Tag all members"}]})
