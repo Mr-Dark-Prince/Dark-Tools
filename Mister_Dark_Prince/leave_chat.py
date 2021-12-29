@@ -3,6 +3,8 @@ import asyncio
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
+from .darkprince.helpo import modules_help
+
 from config import HNDLR
 
 
@@ -16,3 +18,6 @@ async def leave_chat(client: Client, message: Message):
         await client.leave_chat(chat_id=message.chat.id)
     else:
         await message.edit("This is not a group/suppergroup")
+
+
+modules_help.append({"leave_chat": [{"leave_chat" or "lc": "Quit chat"}]})
