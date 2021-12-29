@@ -3,6 +3,7 @@ from asyncio import sleep
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
+from .darkprince.helpo import modules_help
 from config import HNDLR
 
 digits = {
@@ -31,4 +32,7 @@ async def ghoul_counter(c: Client, m: Message):
         await message.edit_text(prettify(counter))
         await sleep(1)
 
-    await message.edit_text("നിന്റെ സമയം അടുത്തു 😹")
+    await message.edit_text("🤷‍♂️")
+
+
+modules_help.append({"counting": [{"10": "counting from 10 to 0"}]})
