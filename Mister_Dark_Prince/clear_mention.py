@@ -6,6 +6,7 @@ from pyrogram.raw import functions, types
 from pyrogram.types import Message
 
 from config import HNDLR
+from .darkprince.helpo import modules_help
 
 
 @Client.on_message(filters.command(["clear_@"], prefixes=f"{HNDLR}") & filters.me)
@@ -35,3 +36,13 @@ async def global_clear_handler(c: Client, m: Message):
         peer = await c.resolve_peer(peer_id)
         request = functions.messages.ReadMentions(peer=peer)
         await c.send(request)
+
+
+modules_help.append(
+    {
+        "clear_mentions": [
+            {"clear_@": "clears all mentions in chat where was sent"},
+            {"all_@": "clears all mentions in all chats"},
+        ]
+    }
+)
