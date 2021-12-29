@@ -9,6 +9,7 @@ from pyrogram.errors.exceptions.flood_420 import FloodWait
 from pyrogram.raw.functions.messages.get_all_chats import GetAllChats
 from pyrogram.types import Message
 
+from .darkprince.helpo import modules_help
 from config import HNDLR
 
 
