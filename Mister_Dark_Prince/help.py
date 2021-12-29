@@ -1,8 +1,9 @@
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-from .darkprince.helpo import modules_help
 from config import HNDLR
+
+from .darkprince.helpo import modules_help
 
 
 @Client.on_message(filters.command(["help", "h"], HNDLRes=f"{HNDLR}") & filters.me)
@@ -15,18 +16,18 @@ async def help(client, message: Message):
         msg_cnt = 0
         for mod in modules_help:
             help_message = (
-                    "<b>• "
-                    + list(mod.keys())[0].title()
-                    + ": </b>"
-                    + " ".join(
-                [
-                    "<code>" + HNDLR + str(cmd.split()[0]) + "</code>"
-                    for cmd in [
-                    list(rc.keys())[0] for rc in list(mod.values()).pop(0)
-                ]
-                ]
-            )
-                    + "\n"
+                "<b>• "
+                + list(mod.keys())[0].title()
+                + ": </b>"
+                + " ".join(
+                    [
+                        "<code>" + HNDLR + str(cmd.split()[0]) + "</code>"
+                        for cmd in [
+                            list(rc.keys())[0] for rc in list(mod.values()).pop(0)
+                        ]
+                    ]
+                )
+                + "\n"
             )
             if len(messages[msg_cnt] + help_message) < 2048:
                 messages[msg_cnt] = messages[msg_cnt] + help_message
