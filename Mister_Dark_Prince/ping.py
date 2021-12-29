@@ -4,6 +4,7 @@ from time import time
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
+from .darkprince.helpo import modules_help
 from config import HNDLR
 
 # System Uptime
