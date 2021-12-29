@@ -6,8 +6,9 @@ from pyrogram import Client, filters
 from pyrogram.errors import FloodWait
 from pyrogram.types import Message
 
-from .darkprince.helpo import modules_help
 from config import HNDLR
+
+from .darkprince.helpo import modules_help
 
 
 @Client.on_message(filters.command("type", prefixes=f"{HNDLR}") & filters.me)
