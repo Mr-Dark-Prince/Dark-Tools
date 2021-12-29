@@ -3,6 +3,7 @@ import asyncio
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
+from .darkprince.helpo import modules_help
 from config import HNDLR
 
 
@@ -29,3 +30,15 @@ async def purge(client: Client, message: Message):
     ]:
         await client.delete_messages(message.chat.id, msgs)
         await asyncio.sleep(1)
+
+
+modules_help.append(
+    {
+        "purge": [
+            {
+                "purge [reply]*": "Reply to a message after which you want to delete messages"
+            },
+            {"del [reply]*": "Reply to the message you want to delete"},
+        ]
+    }
+)
