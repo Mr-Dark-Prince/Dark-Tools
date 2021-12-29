@@ -4,6 +4,7 @@ from pyrogram import Client, filters
 from pyrogram.errors import FloodWait
 from pyrogram.types import Message
 
+from .darkprince.helpo import modules_help
 from config import HNDLR
 
 
@@ -37,3 +38,14 @@ async def forward(client: Client, message: Message):
             await message.edit("<code>Done successfully.</code>", parse_mode="html")
     else:
         await message.edit("<code>No target passed.</code>", parse_mode="html")
+
+
+modules_help.append(
+    {
+        "forwardall": [
+            {
+                "fwdall [target]*": "Foraward all messages to defined target [username/chat_id/chat_link]."
+            }
+        ]
+    }
+)
