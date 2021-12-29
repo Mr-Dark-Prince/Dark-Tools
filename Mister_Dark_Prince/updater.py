@@ -4,9 +4,10 @@ import subprocess
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-from .darkprince.helpo import modules_help
-from .darkprince.helpo import requirements_list
 from config import HNDLR
+
+from .darkprince.helpo import modules_help, requirements_list
+
 
 async def restart(message: Message, restart_type):
     text = "1" if restart_type == "update" else "2"
