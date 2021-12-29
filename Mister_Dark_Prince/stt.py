@@ -1,6 +1,8 @@
+# Re ported by @Mister-Dark-Prince
 import asyncio
 
 from pyrogram import Client, filters
+from pyrogram.raw import functions
 from pyrogram.types import Message
 
 from config import HNDLR
@@ -24,7 +26,7 @@ async def voice_text(client: Client, message: Message):
                 await message.edit(
                     f'<b>📝Text:</b>\n{messages[0].text.replace("Powered by Borodutch Invest"," ")}'
                 )
-
+                
             else:
                 await message.edit("<b> This is not a voice !</b>")
     except Exception as e:
