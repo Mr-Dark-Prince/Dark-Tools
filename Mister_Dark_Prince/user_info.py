@@ -4,9 +4,10 @@ from pyrogram import Client, filters
 from pyrogram.raw import functions
 from pyrogram.types import Message
 
-from .darkprince.scripts import date_dict
-from .darkprince.helpo import modules_help
 from config import HNDLR
+
+from .darkprince.helpo import modules_help
+from .darkprince.scripts import date_dict
 
 
 @Client.on_message(filters.command("inf", prefixes=f"{HNDLR}") & filters.me)
@@ -62,7 +63,7 @@ async def get_full_user_inf(client: Client, message: Message):
         except:
             user = message.from_user.id
     try:
-        await client.send_message("@creationdatebot", '/start')
+        await client.send_message("@creationdatebot", "/start")
         await asyncio.sleep(1)
         date_dict.clear()
         msg = await client.send_message("@creationdatebot", f"/id {user}")
