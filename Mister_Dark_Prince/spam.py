@@ -3,8 +3,9 @@ import asyncio
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
+from config import HNDLR
+
 from .darkprince.helpo import modules_help
-from config import HNDLR 
 
 
 @Client.on_message(filters.command("statspam", prefixes=f"{HNDLR}") & filters.me)
@@ -79,7 +80,7 @@ async def slowspam(client: Client, message: Message):
         return
 
     for _ in range(quantity):
-        msg = await client.send_message(message.chat.id, spam_text)
+        await client.send_message(message.chat.id, spam_text)
         await asyncio.sleep(0.9)
 
 
