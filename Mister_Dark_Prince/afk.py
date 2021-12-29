@@ -4,8 +4,10 @@ import datetime
 from pyrogram import Client, filters
 from pyrogram.handlers import MessageHandler
 
-from .darkprince.helpo import modules_help
 from config import HNDLR
+
+from .darkprince.helpo import modules_help
+
 
 async def afk_handler(client, message):
     try:
