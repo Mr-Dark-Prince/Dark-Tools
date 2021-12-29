@@ -11,7 +11,7 @@ async def help(client, message: Message):
     module_name = " ".join(message.command[1:])
     if module_name == "":
         messages = [
-            f"""<b>Help for <a href="https://t.me/Dragon_Userbot_chat">Dragon-Userbot</a></b>\n<b>For more help on how to use a command, type </b> <code>{HNDLR}help [module]</code>\n\n<b>Available Modules:</b>\n"""
+            f"""<b>Help for <a href="https://t.me/mister_dark_prince">Dark-Tools</a></b>\n<b>For more help on how to use a command, type </b> <code>{HNDLR}help [module]</code>\n\n<b>Available Modules:</b>\n"""
         ]
         msg_cnt = 0
         for mod in modules_help:
