@@ -1,11 +1,11 @@
+from covid import Covid
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-from covid import Covid
-from .darkprince.helpo import modules_help
-from .darkprince.helpo import requirements_list
-
 from config import HNDLR
+
+from .darkprince.helpo import modules_help, requirements_list
+
 
 @Client.on_message(filters.command("covid", prefixes=f"{HNDLR}") & filters.me)
 async def covid_local(client: Client, message: Message):
