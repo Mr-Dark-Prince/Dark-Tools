@@ -6,6 +6,7 @@ from pyrogram import Client, filters
 from pyrogram.errors import FloodWait
 from pyrogram.types import Message
 
+from .darkprince.helpo import modules_help
 from config import HNDLR
 
 
@@ -29,3 +30,14 @@ async def type(client: Client, message: Message):
 
         except FloodWait as e:
             time.sleep(e.x)
+
+
+modules_help.append(
+    {
+        "type": [
+            {
+                "type [text]*": "Typing emulation\nDon't use for a lot of characters. Your account may be banned!"
+            }
+        ]
+    }
+)
