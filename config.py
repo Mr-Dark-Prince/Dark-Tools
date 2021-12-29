@@ -14,7 +14,8 @@ API_HASH = os.getenv("API_HASH")
 SESSION = os.getenv("SESSION")
 HNDLR = os.getenv("HNDLR", "?")
 SUDO_USERS = list(map(int, os.getenv("SUDO_USERS").split()))
-
+db_url = os.getenv("db_url")
+db_name = os.getenv("db_name")
 
 contact_filter = filters.create(
     lambda _, __, message: (message.from_user and message.from_user.is_contact)
