@@ -1,10 +1,9 @@
 import bs4
 import requests
-from pyrogram import filters
-from pyrogram.types import Message
+from pyrogram import Client, filters
 
-from config import HNDLR, bot
-from pyrogram import Client
+from config import HNDLR
+
 
 @Client.on_message(filters.command("app", prefixes=f"{HNDLR}") & filters.me)
 async def app(client, message):
