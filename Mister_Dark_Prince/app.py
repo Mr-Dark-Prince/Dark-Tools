@@ -54,5 +54,3 @@ async def app(client, message):
         await message.edit(app_details, disable_web_page_preview=False)
     except IndexError:
         await message.edit("No result found in search. Please enter **Valid app name**")
-    except Exception as err:
-        await message.err(err)
