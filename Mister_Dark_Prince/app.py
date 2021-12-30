@@ -4,9 +4,9 @@ from pyrogram import filters
 from pyrogram.types import Message
 
 from config import HNDLR, bot
+from config import bot
 
-
-@bot.on_message(filters.command("afk", prefixes=f"{HNDLR}") & filters.me)
+@bot.on_message(filters.command("app", prefixes=f"{HNDLR}") & filters.me)
 async def app(message: Message):
     try:
         await message.edit("`Searching...`")
