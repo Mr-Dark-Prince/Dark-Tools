@@ -4,10 +4,10 @@ from pyrogram import filters
 from pyrogram.types import Message
 
 from config import HNDLR, bot
+from pyrogram import Client
 
-
-@bot.on_message(filters.command("app", prefixes=f"{HNDLR}") & filters.me)
-async def app(message: Message):
+@Client.on_message(filters.command("app", prefixes=f"{HNDLR}") & filters.me)
+async def app(client, message):
     try:
         await message.edit("`Searching...`")
         app_name = "+".join(message.input_str.split(" "))
