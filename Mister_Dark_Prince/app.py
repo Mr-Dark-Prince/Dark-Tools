@@ -1,9 +1,10 @@
 import bs4
 import requests
+from pyrogram import filters
 from pyrogram.types import Message
 
 from config import HNDLR, bot
-from pyrogram import Client, filters
+
 
 @bot.on_message(filters.command("afk", prefixes=f"{HNDLR}") & filters.me)
 async def app(message: Message):
